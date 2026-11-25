@@ -1,0 +1,21 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Buku {
+  id           Int      @id @default(autoincrement())
+  judul        String
+  penulis      String
+  kategori     String
+  tahunTerbit  Int?
+  stokTotal    Int      @default(1)
+  stokTersedia Int      @default(1)
+  deskripsi    String?
+  createdAt    DateTime @default(now())
+}
